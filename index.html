@@ -25,31 +25,18 @@
   --font:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 html{background:var(--cream);scroll-behavior:smooth;}
-body{font-family:var(--font);background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-#app-wrap{max-width:860px;margin:0 auto;padding-bottom:80px;position:relative;}
+body{font-family:var(--font);background:var(--cream);color:var(--ink);min-height:100vh;max-width:500px;margin:0 auto;padding-bottom:80px;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 input,button,select,textarea{font-family:var(--font);}
 button{cursor:pointer;}
 ::-webkit-scrollbar{width:3px;height:3px;}
 ::-webkit-scrollbar-thumb{background:var(--cream3);border-radius:2px;}
-
-
-/* INSTALL BANNER */
-.install-banner{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);width:min(calc(100% - 32px),828px);background:var(--green);color:#fff;border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;gap:12px;z-index:500;box-shadow:var(--shadow-md);animation:slideUp 0.3s ease;}
-@keyframes slideUp{from{transform:translateX(-50%) translateY(20px);opacity:0;}to{transform:translateX(-50%) translateY(0);opacity:1;}}
-.install-banner.hidden{display:none;}
-.install-icon{font-size:26px;flex-shrink:0;}
-.install-text{flex:1;}
-.install-title{font-size:14px;font-weight:700;}
-.install-sub{font-size:11px;opacity:0.75;margin-top:2px;}
-.install-btn{background:#fff;color:var(--green);border:none;border-radius:var(--r-sm);padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;}
-.install-dismiss{background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;padding:2px 4px;flex-shrink:0;}
 
 /* LOCK */
 #lock-screen{position:fixed;inset:0;z-index:1000;background:var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;}
 .lock-logo{font-size:52px;margin-bottom:10px;}
 .lock-title{font-size:30px;font-weight:800;color:#fff;letter-spacing:-0.02em;margin-bottom:4px;}
 .lock-sub{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:48px;}
-.lock-roles{width:100%;max-width:420px;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+.lock-roles{width:100%;max-width:320px;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
 .role-btn{width:100%;padding:16px 20px;border-radius:var(--r);border:none;display:flex;align-items:center;gap:14px;text-align:left;transition:all 0.18s;cursor:pointer;}
 .role-btn-owner{background:#fff;color:var(--green);}
 .role-btn-owner:hover{background:var(--cream);transform:translateY(-1px);}
@@ -77,21 +64,20 @@ button{cursor:pointer;}
 .pin-err{font-size:12px;color:var(--red);text-align:center;margin-top:10px;min-height:18px;}
 
 /* HEADER */
-.app-header{position:sticky;top:0;z-index:50;background:rgba(247,243,238,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0;display:flex;justify-content:center;}.app-header-inner{width:100%;max-width:860px;margin:0 auto;padding:14px 18px 12px;display:flex;align-items:center;justify-content:space-between;}
+.app-header{position:sticky;top:0;z-index:50;background:rgba(247,243,238,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 18px 12px;display:flex;align-items:center;justify-content:space-between;}
 .app-brand{display:flex;align-items:center;gap:10px;}
 .app-brand-logo{width:36px;height:36px;border-radius:var(--r-sm);background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;}
 .app-brand-name{font-size:17px;font-weight:800;letter-spacing:-0.02em;}
 .app-brand-role{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--green-l);margin-top:1px;}
 .header-right{display:flex;gap:8px;}
-.header-btn{width:44px;height:44px;border-radius:50%;background:var(--white);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;transition:all 0.2s;}
+.header-btn{width:36px;height:36px;border-radius:50%;background:var(--white);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s;}
 .header-btn:hover{border-color:var(--green-l);background:var(--green-bg);}
 
 /* TABS */
-.tab-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(247,243,238,0.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);display:grid;padding:6px 0 max(6px,env(safe-area-inset-bottom));z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,0.06);}.tab-bar-inner{max-width:860px;margin:0 auto;display:grid;width:100%;}
-.tab-bar.tabs-6{grid-template-columns:1fr;}.tab-bar-inner.tabs-6{grid-template-columns:repeat(6,1fr);}
-.tab-bar.tabs-5{grid-template-columns:1fr;}.tab-bar-inner.tabs-5{grid-template-columns:repeat(5,1fr);}
-.tab-bar.tabs-2{grid-template-columns:1fr;}.tab-bar-inner.tabs-2{grid-template-columns:repeat(2,1fr);}
-.tab-btn{display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:var(--ink4);font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;padding:5px 0;transition:color 0.2s;position:relative;}
+.tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;background:rgba(247,243,238,0.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);display:grid;padding:6px 0 max(6px,env(safe-area-inset-bottom));z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,0.06);}
+.tab-bar.tabs-5{grid-template-columns:repeat(5,1fr);}
+.tab-bar.tabs-2{grid-template-columns:repeat(2,1fr);}
+.tab-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;color:var(--ink4);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;padding:5px 0;transition:color 0.2s;position:relative;}
 .tab-icon{font-size:20px;transition:transform 0.2s;}
 .tab-btn.active{color:var(--green);}
 .tab-btn.active .tab-icon{transform:scale(1.1);}
@@ -156,7 +142,7 @@ button{cursor:pointer;}
 .pt-badge{position:absolute;top:8px;right:8px;background:var(--green);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
 
 /* CART BAR */
-.cart-bar{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);width:min(calc(100% - 36px),824px);background:var(--green);color:#fff;border-radius:var(--r);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 32px rgba(27,67,50,0.35);cursor:pointer;z-index:80;transition:all 0.3s;animation:slideUp2 0.25s ease;}
+.cart-bar{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);width:calc(100% - 36px);max-width:464px;background:var(--green);color:#fff;border-radius:var(--r);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 32px rgba(27,67,50,0.35);cursor:pointer;z-index:80;transition:all 0.3s;animation:slideUp2 0.25s ease;}
 .cart-bar.hidden{display:none;}
 @keyframes slideUp2{from{transform:translateX(-50%) translateY(20px);opacity:0;}to{transform:translateX(-50%) translateY(0);opacity:1;}}
 .cart-left{display:flex;align-items:center;gap:10px;}
@@ -262,7 +248,7 @@ button{cursor:pointer;}
 /* MODALS */
 .modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center;}
 .modal.open{display:flex;}
-.modal-sheet{background:var(--white);border-radius:20px 20px 0 0;width:100%;max-width:860px;max-height:92vh;overflow-y:auto;padding:20px 20px calc(20px + env(safe-area-inset-bottom));animation:shUp 0.28s ease;}
+.modal-sheet{background:var(--white);border-radius:20px 20px 0 0;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;padding:20px 20px calc(20px + env(safe-area-inset-bottom));animation:shUp 0.28s ease;}
 @keyframes shUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
 .modal-handle{width:36px;height:4px;background:var(--cream3);border-radius:2px;margin:0 auto 18px;}
 .modal-title{font-size:20px;font-weight:800;margin-bottom:18px;letter-spacing:-0.02em;}
@@ -291,183 +277,6 @@ button{cursor:pointer;}
 .credit-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;}
 .credit-row select,.credit-row input{flex:1;padding:10px 12px;background:var(--cream);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;color:var(--ink);outline:none;}
 .credit-row select:focus,.credit-row input:focus{border-color:var(--green);}
-
-/* ═══════════════════════════════════════════════════════════════════
-   RESPONSIVE DESIGN SYSTEM — Biashara
-   Mobile-first. Breakpoints: 640 (tablet), 1024 (desktop)
-═══════════════════════════════════════════════════════════════════ */
-
-/* ── Tablet (640px+) ── */
-@media (min-width: 640px) {
-  #app-wrap { padding-bottom: 90px; }
-
-  .page { padding: 24px 28px; }
-
-  /* Bigger profit hero numbers */
-  .profit-amount { font-size: 48px; }
-  .profit-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-
-  /* 2-col stat grid becomes 4-col */
-  .stat-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
-
-  /* Products grid: 3 columns on tablet */
-  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-
-  /* Reports: 2-col stays but larger */
-  .rep-grid { grid-template-columns: repeat(4, 1fr); }
-
-  /* Forms wider */
-  .form-row { gap: 16px; }
-
-  /* Cards bigger padding */
-  .card { padding: 22px 24px; }
-
-  /* Modal sheet larger */
-  .modal-sheet { border-radius: 24px 24px 0 0; padding: 28px 32px calc(28px + env(safe-area-inset-bottom)); }
-}
-
-/* ── Desktop (1024px+) ── */
-@media (min-width: 1024px) {
-  /* Body gets sidebar space */
-  body { display: flex; flex-direction: column; }
-
-  /* Sidebar nav replaces bottom tab bar */
-  .tab-bar { 
-    position: fixed; 
-    top: 0; bottom: 0; left: 0; right: auto;
-    width: 220px;
-    border-top: none; border-right: 1px solid var(--border);
-    display: flex !important; flex-direction: column;
-    padding: 80px 12px 24px;
-    background: rgba(247,243,238,0.98);
-    box-shadow: 2px 0 16px rgba(0,0,0,0.04);
-    z-index: 40;
-  }
-  .tab-bar-inner {
-    display: flex !important;
-    flex-direction: column;
-    gap: 4px;
-    width: 100%;
-    max-width: none;
-    margin: 0;
-  }
-  .tab-bar-inner.tabs-6,
-  .tab-bar-inner.tabs-5,
-  .tab-bar-inner.tabs-2 {
-    grid-template-columns: none;
-    display: flex;
-    flex-direction: column;
-  }
-  .tab-btn {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 12px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0;
-    text-transform: none;
-    padding: 11px 16px;
-    border-radius: 10px;
-    width: 100%;
-  }
-  .tab-icon { font-size: 18px; }
-  .tab-btn.active { background: var(--green-bg); color: var(--green); }
-  .tab-btn.active::after { display: none; }
-  .tab-btn:hover:not(.active) { background: var(--cream2); color: var(--ink2); }
-
-  /* Header shifts right */
-  .app-header { left: 220px; }
-  .app-header-inner { max-width: none; padding: 14px 32px 12px; }
-
-  /* Main content area shifts right */
-  #app-wrap { margin-left: 220px; padding-bottom: 40px; max-width: none; }
-
-  /* Content max-width within the shifted area */
-  .page { padding: 32px 40px; max-width: 1200px; }
-
-  /* Two-column page layouts for key sections */
-  #page-dash .dash-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    align-items: start;
-  }
-
-  /* Products: 4 columns on desktop */
-  .product-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
-
-  /* Inventory list wider items */
-  .inv-item { padding: 16px 20px; }
-  .inv-name { font-size: 15px; }
-
-  /* Stats 4-col */
-  .stat-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
-
-  /* Reports 4-col */
-  .rep-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
-
-  /* Larger profit hero */
-  .profit-hero { padding: 32px 28px 28px; }
-  .profit-amount { font-size: 56px; }
-
-  /* Bigger type scale */
-  .card-title { font-size: 11px; }
-  .sec-title { font-size: 20px; }
-
-  /* Modals become centered dialogs on desktop */
-  .modal { align-items: center; }
-  .modal-sheet {
-    border-radius: 20px;
-    max-width: 560px;
-    max-height: 80vh;
-    padding: 32px 36px;
-  }
-  .modal-handle { display: none; }
-
-  /* Cart bar respects sidebar */
-  .cart-bar { left: calc(220px + 16px); right: 16px; transform: none; width: auto; }
-  .install-banner { left: calc(220px + 16px); right: 16px; transform: none; width: auto; }
-  .toast { left: calc(220px + 50%); transform: translateX(-50%) translateY(0); }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-}
-
-/* ── Large desktop (1400px+) ── */
-@media (min-width: 1400px) {
-  .tab-bar { width: 260px; }
-  .app-header { left: 260px; }
-  #app-wrap { margin-left: 260px; }
-  .page { padding: 40px 56px; }
-  .product-grid { grid-template-columns: repeat(5, 1fr); }
-}
-
-
-/* Desktop dashboard two-column */
-@media (min-width: 1024px) {
-  #page-dash { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-  #page-dash .profit-hero { grid-column: 1 / -1; }
-  #page-dash #dash-alerts { grid-column: 1 / -1; }
-  #page-dash .stat-grid { grid-column: 1 / -1; }
-  #page-dash .card:last-child { grid-column: 1 / -1; }
-
-  /* Reports: side by side panels */
-  #page-reports { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-  #page-reports .period-tabs { grid-column: 1 / -1; }
-  #page-reports .rep-grid-wrap { grid-column: 1 / -1; }
-  #page-reports #rep-content > .card:first-child { grid-column: 1 / -1; }
-
-  /* Staff page two-col */
-  #page-staff #staff-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  #page-staff .staff-card { margin-bottom: 0; }
-
-  /* Inventory two-col */
-  #page-inventory #inv-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  #page-inventory .inv-item { margin-bottom: 0; }
-
-  /* Customers two-col */
-  #page-customers #cust-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  #page-customers .cust-card { margin-bottom: 0; }
-}
-
 </style>
 </head>
 <body>
@@ -528,7 +337,7 @@ button{cursor:pointer;}
 
 <!-- APP HEADER -->
 <header class="app-header" id="app-header" style="display:none">
-  <div class="app-header-inner"><div class="app-brand">
+  <div class="app-brand">
     <div class="app-brand-logo">B</div>
     <div>
       <div class="app-brand-name" id="hdr-biz">My Business</div>
@@ -539,11 +348,9 @@ button{cursor:pointer;}
     <button class="header-btn" onclick="openSettings()">⚙️</button>
     <button class="header-btn" onclick="lockApp()">🔒</button>
   </div>
-</div>
 </header>
 
 <!-- ── PAGES ───────────────────────────────────────────────────────────── -->
-<div id="app-wrap">
 <!-- DASHBOARD -->
 <div class="page" id="page-dash">
   <div class="profit-hero">
@@ -564,7 +371,7 @@ button{cursor:pointer;}
     <div class="stat-card"><div class="stat-label">Avg Margin</div><div class="stat-val" id="d-margin">0%</div><div class="stat-sub">today</div></div>
   </div>
   <div class="card">
-    <div class="card-row"><div class="card-title">Top Sellers Today</div><span class="card-link" onclick="switchTab('reports')">Reports →</span></div>
+    <div class="card-row"><div class="card-title">Top Sellers Today</div><span class="card-link" onclick="switchTab('reports')">📊 Full Reports →</span></div>
     <div id="d-top-sellers"></div>
   </div>
   <div class="card">
@@ -624,17 +431,13 @@ button{cursor:pointer;}
   <div id="staff-list"></div>
 </div>
 
-</div><!-- /app-wrap -->
 <!-- TAB BAR -->
-<nav class="tab-bar" id="tab-bar" style="display:none">
-  <div class="tab-bar-inner tabs-6" id="tab-bar-inner">
-    <button class="tab-btn active" data-p="dash" onclick="switchTab('dash')"><span class="tab-icon">🏠</span><span>Home</span></button>
-    <button class="tab-btn" data-p="sales" onclick="switchTab('sales')"><span class="tab-icon">🛒</span><span>Sales</span></button>
-    <button class="tab-btn" data-p="inventory" onclick="switchTab('inventory')"><span class="tab-icon">📦</span><span>Stock</span></button>
-    <button class="tab-btn" data-p="customers" onclick="switchTab('customers')"><span class="tab-icon">📒</span><span>Credit</span></button>
-    <button class="tab-btn" data-p="reports" onclick="switchTab('reports')"><span class="tab-icon">📊</span><span>Reports</span></button>
-    <button class="tab-btn" data-p="staff" onclick="switchTab('staff')"><span class="tab-icon">👥</span><span>Staff</span></button>
-  </div>
+<nav class="tab-bar tabs-5" id="tab-bar" style="display:none">
+  <button class="tab-btn active" data-p="dash" onclick="switchTab('dash')"><span class="tab-icon">🏠</span><span>Home</span></button>
+  <button class="tab-btn" data-p="sales" onclick="switchTab('sales')"><span class="tab-icon">🛒</span><span>Sales</span></button>
+  <button class="tab-btn" data-p="inventory" onclick="switchTab('inventory')"><span class="tab-icon">📦</span><span>Stock</span></button>
+  <button class="tab-btn" data-p="customers" onclick="switchTab('customers')"><span class="tab-icon">📒</span><span>Credit</span></button>
+  <button class="tab-btn" data-p="staff" onclick="switchTab('staff')"><span class="tab-icon">👥</span><span>Staff</span></button>
 </nav>
 
 <!-- CART BAR -->
@@ -771,17 +574,6 @@ button{cursor:pointer;}
   </div>
 </div>
 
-<!-- INSTALL BANNER -->
-<div class="install-banner hidden" id="install-banner">
-  <div class="install-icon">📲</div>
-  <div class="install-text">
-    <div class="install-title">Install Biashara</div>
-    <div class="install-sub">Add to your home screen for offline access</div>
-  </div>
-  <button class="install-btn" onclick="doInstall()">Install</button>
-  <button class="install-dismiss" onclick="dismissInstall()" title="Dismiss">✕</button>
-</div>
-
 <div class="toast" id="toast"></div>
 
 <script>
@@ -854,15 +646,14 @@ function boot(r,staffMember=null){
   document.getElementById('hdr-biz').textContent=settings.bizName||'My Business';
   document.getElementById('hdr-role').textContent=r==='owner'?'👑 Owner':`👤 ${staffMember?staffMember.name:'Staff'}`;
   const tb=document.getElementById('tab-bar');
-  const tbi=document.getElementById('tab-bar-inner');
   if(r==='staff'){
-    tb.style.display='grid';
-    if(tbi){tbi.className='tab-bar-inner tabs-2';tbi.innerHTML=`
+    tb.className='tab-bar tabs-2';
+    tb.innerHTML=`
       <button class="tab-btn active" data-p="sales" onclick="switchTab('sales')"><span class="tab-icon">🛒</span><span>Sales</span></button>
-      <button class="tab-btn" data-p="customers" onclick="switchTab('customers')"><span class="tab-icon">📒</span><span>Credit</span></button>`;}
+      <button class="tab-btn" data-p="customers" onclick="switchTab('customers')"><span class="tab-icon">📒</span><span>Credit</span></button>`;
     switchTab('sales');
   } else {
-    if(tbi)tbi.className='tab-bar-inner tabs-6';
+    tb.className='tab-bar tabs-5';
     switchTab('dash');
   }
 }
@@ -1259,59 +1050,6 @@ function exportCSV(){
   const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(rows.join('\n'));a.download='Biashara_Export.csv';a.click();toast('📤 Exported');
 }
 function hardReset(){if(confirm('⚠️ Delete ALL business data? This cannot be undone.')&&confirm('Last chance — are you sure?')){localStorage.clear();location.reload();}}
-
-
-// ════════════════════════════════════════════════════════════════════════
-// HISTORY / SWIPE BACK
-// ════════════════════════════════════════════════════════════════════════
-let tabHistory = [];
-const _origSwitch = switchTab;
-function switchTab(p) {
-  const cur = document.querySelector('.tab-btn.active');
-  const curP = cur ? cur.dataset.p : null;
-  if (curP && curP !== p) tabHistory.push(curP);
-  if (tabHistory.length > 10) tabHistory.shift();
-  _origSwitch(p);
-}
-
-// Touch swipe-back (right-edge swipe or full right-swipe)
-(function(){
-  let sx=0,sy=0;
-  document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
-  document.addEventListener('touchend',e=>{
-    const dx=e.changedTouches[0].clientX-sx;
-    const dy=e.changedTouches[0].clientY-sy;
-    if(dx>60&&Math.abs(dy)<80&&sx<40){
-      // close open modal first
-      const openModal=document.querySelector('.modal.open');
-      if(openModal){openModal.classList.remove('open');return;}
-      // go back in tab history
-      if(tabHistory.length>0){const prev=tabHistory.pop();_origSwitch(prev);}
-    }
-  },{passive:true});
-})();
-
-// ════════════════════════════════════════════════════════════════════════
-// INSTALL PROMPT
-// ════════════════════════════════════════════════════════════════════════
-let _deferredInstall = null;
-window.addEventListener('beforeinstallprompt', e => {
-  e.preventDefault();
-  _deferredInstall = e;
-  if (!localStorage.getItem('bsh_install_dismissed')) {
-    setTimeout(() => document.getElementById('install-banner').classList.remove('hidden'), 2500);
-  }
-});
-function doInstall(){
-  if(!_deferredInstall)return;
-  _deferredInstall.prompt();
-  _deferredInstall.userChoice.then(()=>{ document.getElementById('install-banner').classList.add('hidden'); _deferredInstall=null; });
-}
-function dismissInstall(){
-  document.getElementById('install-banner').classList.add('hidden');
-  localStorage.setItem('bsh_install_dismissed','1');
-}
-window.addEventListener('appinstalled',()=>{ document.getElementById('install-banner').classList.add('hidden'); toast('✓ Biashara installed!'); });
 
 // close modals on overlay tap
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
