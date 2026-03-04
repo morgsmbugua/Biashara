@@ -296,7 +296,16 @@ button{cursor:pointer;}
       <div><div class="role-label">Staff / Cashier</div><div class="role-desc">Enter PIN — Sales only</div></div>
     </button>
   </div>
-  <div style="font-size:12px;color:rgba(255,255,255,0.35);">Configure in Settings after logging in</div>
+  <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:14px 16px;max-width:320px;width:100%;margin-bottom:8px;">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-bottom:8px;">👤 How to give staff access</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.7;">
+      1. Log in as <strong style="color:#fff">Owner</strong><br>
+      2. Tap <strong style="color:#fff">Staff tab (👥)</strong> at the bottom<br>
+      3. Tap <strong style="color:#fff">+ Add Staff</strong>, enter their name &amp; set a 4-digit PIN<br>
+      4. They log in by tapping <strong style="color:#fff">Staff / Cashier</strong> and entering that PIN
+    </div>
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px;">New? Log in as Owner — no PIN needed</div>
 </div>
 
 <!-- PIN MODAL -->
@@ -416,6 +425,9 @@ button{cursor:pointer;}
 <!-- STAFF -->
 <div class="page" id="page-staff">
   <div class="sec-title">Staff <button class="btn-sec" style="margin-left:auto;padding:7px 14px;font-size:12px;" onclick="openAddStaff()">+ Add Staff</button></div>
+  <div style="background:#EBF5EE;border:1px solid rgba(64,145,108,0.3);border-radius:10px;padding:14px;margin-bottom:14px;font-size:13px;color:#2D6A4F;line-height:1.6;">
+    <strong>How it works:</strong> Add a staff member with a unique 4-digit PIN. When they open the app, they tap <em>Staff / Cashier</em> on the lock screen and enter their PIN. They will only see Sales and Credit — not profits or inventory.
+  </div>
   <div id="staff-list"></div>
 </div>
 
@@ -519,7 +531,7 @@ button{cursor:pointer;}
     <div class="fg"><label class="fl">Role</label>
       <select class="fi" id="s-role"><option>Cashier</option><option>Supervisor</option><option>Stockist</option></select>
     </div>
-    <div class="fg"><label class="fl">4-Digit PIN *</label><input class="fi mono" type="password" id="s-pin" placeholder="Set a PIN" maxlength="4" inputmode="numeric"></div>
+    <div class="fg"><label class="fl">4-Digit PIN *</label><input class="fi mono" type="number" id="s-pin" placeholder="e.g. 5678" maxlength="4" inputmode="numeric" style="letter-spacing:0.2em;"><div style="font-size:11px;color:var(--ink3);margin-top:5px;">This PIN is what the staff member enters at login. Share it with them.</div></div>
     <div class="flex-row">
       <button class="btn-danger" style="flex:0 0 auto;" onclick="closeAddStaff()">Cancel</button>
       <button class="btn-primary" onclick="saveStaff()">Add Staff</button>
@@ -622,7 +634,7 @@ function checkPin(){
   } else {
     const m=staff.find(s=>s.pin===pinBuf);
     if(m){document.getElementById('pin-overlay').classList.remove('open');boot('staff',m);}
-    else if(!staff.length&&pinBuf==='1234'){document.getElementById('pin-overlay').classList.remove('open');boot('staff');}
+    else if(!staff.length){err.textContent='No staff added yet. Log in as Owner → Staff tab → + Add Staff.';pinBuf='';updDots();}
     else{err.textContent='Wrong PIN. Try again.';pinBuf='';updDots();}
   }
 }
@@ -1016,8 +1028,11 @@ function saveStaff(){
   const name=document.getElementById('s-name').value.trim();const pin=document.getElementById('s-pin').value.trim();
   if(!name||pin.length!==4){toast('⚠️ Name and 4-digit PIN required');return;}
   staff.push({id:uid(),name,role:document.getElementById('s-role').value,pin});
+  const addedName=document.getElementById('s-name').value.trim();
+  const addedPin=document.getElementById('s-pin').value.trim();
   sv(K.staff,staff);['s-name','s-pin'].forEach(id=>document.getElementById(id).value='');
-  closeAddStaff();renderStaff();toast('✓ Staff added');
+  closeAddStaff();renderStaff();
+  toast('✓ '+addedName+' added — PIN: '+addedPin, 4000);
 }
 function delStaff(id){if(!confirm('Remove this staff member?'))return;staff=staff.filter(s=>s.id!==id);sv(K.staff,staff);renderStaff();}
 
